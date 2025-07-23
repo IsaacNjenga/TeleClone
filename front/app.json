@@ -4,7 +4,7 @@
     "slug": "front",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/chatIcon.png",
     "scheme": "front",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -28,14 +28,28 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/splash.jpg",
           "imageWidth": 200,
-          "resizeMode": "contain",
+          "resizeMode": "cover",
           "backgroundColor": "#ffffff"
         }
       ],
       "expo-video",
-      "expo-audio"
+      {
+        "supportsBackgroundPlayback": true,
+        "supportsPictureInPicture": true
+      },
+      "expo-audio",
+      "expo-image-picker",
+      {
+        "cameraPermission": "$(PRODUCT_NAME) would like to use your camera to share image in a message.",
+        "photosPermission": "$(PRODUCT_NAME) would like to use your device gallery to attach image in a message."
+      },
+      "expo-media-library",
+      {
+        "photosPermission": "$(PRODUCT_NAME) would like access to your photo gallery to share image in a message.",
+        "savePhotosPermission": "$(PRODUCT_NAME) would like to save photos to your photo gallery after downloading from a message."
+      }
     ],
     "experiments": {
       "typedRoutes": true
