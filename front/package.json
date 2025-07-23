@@ -20,7 +20,6 @@
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
     "@stream-io/flat-list-mvcp": "^0.10.3",
-    "@stream-io/react-native-webrtc": "^125.3.1",
     "@stream-io/video-react-native-sdk": "^1.19.1",
     "@supabase/supabase-js": "^2.52.0",
     "expo": "~53.0.17",

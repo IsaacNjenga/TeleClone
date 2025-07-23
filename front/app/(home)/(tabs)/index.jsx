@@ -1,6 +1,6 @@
 import { useAuth } from "@/providers/AuthProvider";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { Link, router, Stack } from "expo-router";
+import { Link, Redirect, router, Stack } from "expo-router";
 import React from "react";
 import { ChannelList } from "stream-chat-expo";
 
@@ -9,6 +9,7 @@ const MainTabScreen = () => {
 
   return (
     <>
+      <Redirect href={"/(home)/call"} />
       <Stack.Screen
         options={{
           headerRight: () => (

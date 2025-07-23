@@ -3,7 +3,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 export default function TabsNavigator() {
   return (
-    <Tabs >
+    <Tabs>
       <Tabs.Screen
         name="index"
         options={{
@@ -21,7 +21,16 @@ export default function TabsNavigator() {
             <FontAwesome5 name="user-alt" size={size} color={color} />
           ),
         }}
-      />
+      />{" "}
+      {/* <Tabs.Screen
+        name="call"
+        options={{
+          title: "Calls",
+          tabBarIcon: ({ size, color }) => (
+            <FontAwesome5 name="phone-alt" size={size} color={color} />
+          ),
+        }}
+      /> */}
     </Tabs>
   );
 }
