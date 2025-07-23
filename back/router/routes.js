@@ -11,7 +11,7 @@ const api_secret = process.env.STREAM_API_SECRET;
 
 const serverClient = StreamChat.getInstance(api_key, api_secret);
 
-router.post("/get-token", async (req, res) => {
+router.post("/authorise-token", async (req, res) => {
   const { user_id } = req.body;
   if (!user_id) {
     return res
