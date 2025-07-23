@@ -5,7 +5,7 @@ import { Chat, OverlayProvider } from "stream-chat-expo";
 import { useAuth } from "./AuthProvider";
 import { supabase } from "@/lib/supabase";
 
-const client = StreamChat.getInstance(process.env.EXPO_PUBLIC_STREAM_API_KEY);
+export const client = StreamChat.getInstance(process.env.EXPO_PUBLIC_STREAM_API_KEY);
 
 const ChatProvider = ({ children }) => {
   const [isReady, setIsReady] = useState(false);
@@ -36,6 +36,7 @@ const ChatProvider = ({ children }) => {
 
     const connect = async () => {
       const token = await authoriseToken(profile.id);
+      console.log(token);
       await client.connectUser(
         {
           id: profile.id,

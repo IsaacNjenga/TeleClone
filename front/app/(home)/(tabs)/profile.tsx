@@ -11,6 +11,7 @@ import {
 import { Button, Input } from "react-native-elements";
 import { useAuth } from "@/providers/AuthProvider";
 import Avatar from "@/components/avatar";
+import { client } from "@/providers/ChatProvider";
 
 export default function ProfileScreen() {
   const { session } = useAuth();
@@ -117,6 +118,15 @@ export default function ProfileScreen() {
     }
   }
 
+  const handleSignOut = async () => {
+    try {
+      await client.disconnectUser();
+      await supabase.auth.signOut();
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
   if (loading) {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <ActivityIndicator size="large" color="#0000ff" />
@@ -192,7 +202,7 @@ export default function ProfileScreen() {
       </View>
 
       <View style={styles.verticallySpaced}>
-        <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
+        <Button title="Sign Out" onPress={handleSignOut} />
       </View>
     </ScrollView>
   );
