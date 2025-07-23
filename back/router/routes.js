@@ -23,7 +23,6 @@ router.post("/authorise-token", async (req, res) => {
 
   try {
     const token = serverClient.createToken(user_id);
-    console.log(token);
     return res.status(200).json({ token });
   } catch (error) {
     console.log("Error in token generation", error);

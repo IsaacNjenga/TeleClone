@@ -11,6 +11,20 @@ const ChatProvider = ({ children }) => {
   const [isReady, setIsReady] = useState(false);
   const { profile } = useAuth();
 
+  const authoriseToken = async (user_id) => {
+    const res = await fetch(
+      "https://tele-clone-six.vercel.app/api/authorise-token",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id }),
+      }
+    );
+
+    const data = await res.json();
+    return data.token;
+  };
+
   useEffect(() => {
     if (!profile) {
       return;
@@ -21,13 +35,14 @@ const ChatProvider = ({ children }) => {
       .getPublicUrl(profile.avatar_url).data.publicUrl;
 
     const connect = async () => {
+      const token = await authoriseToken(profile.id);
       await client.connectUser(
         {
           id: profile.id,
           name: profile.full_name,
           image: imageUrl,
         },
-        client.devToken(profile.id)
+        token
       );
     };
     setIsReady(true);
@@ -43,20 +58,18 @@ const ChatProvider = ({ children }) => {
 
   if (!isReady)
     return (
-        <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Text
+          style={{
+            marginTop: 10,
+            fontSize: 18,
+            color: "#333",
+          }}
         >
-          <ActivityIndicator size="large" color="#0000ff" />
-          <Text
-            style={{
-              marginTop: 10,
-              fontSize: 18,
-              color: "#333",
-            }}
-          >
-            Loading...
-          </Text>
-        </View>
+          Loading...
+        </Text>
+      </View>
     );
 
   return (
