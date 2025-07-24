@@ -22,15 +22,6 @@ export default function TabsNavigator() {
           ),
         }}
       />{" "}
-      {/* <Tabs.Screen
-        name="call"
-        options={{
-          title: "Calls",
-          tabBarIcon: ({ size, color }) => (
-            <FontAwesome5 name="phone-alt" size={size} color={color} />
-          ),
-        }}
-      /> */}
     </Tabs>
   );
 }
