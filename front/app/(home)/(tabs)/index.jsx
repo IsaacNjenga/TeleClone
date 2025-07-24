@@ -9,7 +9,7 @@ const MainTabScreen = () => {
 
   return (
     <>
-      {/* <Redirect href={"/(home)/call"} /> */}
+      <Redirect href={"/(home)/call"} />
       <Stack.Screen
         options={{
           headerRight: () => (
